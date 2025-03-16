@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
       <p className="price">${product.price.toFixed(2)}</p>
       <p>{product.description.substring(0, 100)}...</p>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
-        <Link to={`/products/${product._id}`}>
+        <Link to={`/products/${product.id}`}>
           <button className="btn-secondary">View Details</button>
         </Link>
         <button 

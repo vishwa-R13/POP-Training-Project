@@ -23,18 +23,18 @@ const Home = () => {
       <div style={{ marginTop: '3rem' }}>
         <h2 style={{ textAlign: 'center', marginBottom: '1.5rem' }}>How It Works</h2>
         <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px' }}>
-          <div className="card" style={{ flex: '1', minWidth: '250px' }}>
+          <section className="card" style={{ flex: '1', minWidth: '250px' }}>
             <h3>1. Browse Products</h3>
             <p>Explore our extensive catalog of products with detailed specifications and features.</p>
-          </div>
-          <div className="card" style={{ flex: '1', minWidth: '250px' }}>
+          </section>
+          <section className="card" style={{ flex: '1', minWidth: '250px' }}>
             <h3>2. Add to Compare</h3>
             <p>Select products you're interested in and add them to your comparison list.</p>
-          </div>
-          <div className="card" style={{ flex: '1', minWidth: '250px' }}>
+          </section>
+          <section className="card" style={{ flex: '1', minWidth: '250px' }}>
             <h3>3. Compare Side by Side</h3>
             <p>View products side by side to easily compare features, prices, and specifications.</p>
-          </div>
+          </section>
         </div>
       </div>
     </div>

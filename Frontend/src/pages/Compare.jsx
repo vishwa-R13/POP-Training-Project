@@ -5,7 +5,7 @@ const Compare = () => {
   const [compareList, setCompareList] = useState([])
   
   useEffect(() => {
-    const storedList = JSON.parse(localStorage.getItem('compareList') || '[]')
+    const storedList = JSON.parse(localStorage.getItem('compareList'))
     setCompareList(storedList)
   }, [])
   
@@ -63,7 +63,7 @@ const Compare = () => {
         </button>
       </div>
       
-      <div style={{ overflowX: 'auto' }}>
+      <div>
         <table className="compare-table">
           <thead>
             <tr>

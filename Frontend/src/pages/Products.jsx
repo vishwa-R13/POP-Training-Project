@@ -3,19 +3,17 @@ import ProductCard from '../components/ProductCard'
 
 const Products = () => {
   const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [searchTerm, setSearchTerm] = useState('')
+  const [search, setsearch] = useState('')
   
   useEffect(() => {
-    // Use local data instead of API call
+    // load products data using json 
     const localProducts = [
       {
         _id: "1",
         name: "iPhone 15 Pro",
         description: "Apple's latest flagship smartphone with advanced camera system and powerful A17 Pro chip.",
         price: 999.99,
-        image: "https://images.unsplash.com/photo-1695048133142-1a20484bce71?q=80&w=2070&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1710023038502-ba80a70a9f53?q=80&w=1964&auto=format&fit=crop",
         category: "Smartphones",
         features: [
           "A17 Pro chip",
@@ -39,7 +37,7 @@ const Products = () => {
         name: "Samsung Galaxy S24 Ultra",
         description: "Samsung's premium smartphone with S Pen support and advanced AI features.",
         price: 1199.99,
-        image: "https://images.unsplash.com/photo-1707227156456-e5303a9c7b86?q=80&w=2071&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1705585175110-d25f92c183aa?q=80&w=1932&auto=format&fit=crop",
         category: "Smartphones",
         features: [
           "Snapdragon 8 Gen 3 processor",
@@ -63,7 +61,7 @@ const Products = () => {
         name: "Google Pixel 8 Pro",
         description: "Google's flagship phone with advanced AI capabilities and exceptional camera performance.",
         price: 899.99,
-        image: "https://images.unsplash.com/photo-1696446702183-dec715e3f8f5?q=80&w=2070&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1666238851843-c4580232a6a4?q=80&w=2148&auto=format&fit=crop",
         category: "Smartphones",
         features: [
           "Google Tensor G3 chip",
@@ -157,17 +155,13 @@ const Products = () => {
     ];
     
     setProducts(localProducts);
-    setLoading(false);
   }, []);
   
-  // Filter products based on search term
+  // Filterng products based on search
   const filteredProducts = products.filter(product => 
-    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    product.category.toLowerCase().includes(searchTerm.toLowerCase())
+    product.name.toLowerCase().includes(search.toLowerCase()) ||
+    product.category.toLowerCase().includes(search.toLowerCase())
   )
-  
-  if (loading) return <div className="container"><h2>Loading products...</h2></div>
-  if (error) return <div className="container"><h2>Error: {error}</h2></div>
   
   return (
     <div className="container">
@@ -178,8 +172,8 @@ const Products = () => {
           type="text" 
           placeholder="Search products..." 
           className="form-control"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={search}
+          onChange={(e) => setsearch(e.target.value)}
           style={{ maxWidth: '400px' }}
         />
       </div>
@@ -189,7 +183,7 @@ const Products = () => {
       ) : (
         <div className="product-grid">
           {filteredProducts.map(product => (
-            <ProductCard key={product._id} product={product} />
+            <ProductCard product={product} />
           ))}
         </div>
       )}

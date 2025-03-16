@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom'
 const Navbar = () => {
   const navigate = useNavigate()
   
-  // Check if user is logged in
   const isLoggedIn = localStorage.getItem('token') ? true : false
   
   const handleLogout = () => {
