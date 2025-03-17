@@ -63,7 +63,7 @@ import React, { useState, useEffect } from 'react'
          name: "Google Pixel 8 Pro",
          description: "Google's flagship phone with advanced AI capabilities and exceptional camera performance.",
          price: 899.99,
-         image: "Google's flagship phone with advanced AI capabilities and exceptional camera performance.",
+         image: "https://images.unsplash.com/photo-1666238851843-c4580232a6a4?q=80&w=2148&auto=format&fit=crop",
          category: "Smartphones",
          features: [
            "Google Tensor G3 chip",
@@ -239,4 +239,3 @@ import React, { useState, useEffect } from 'react'
  }
  
  export default ProductDetails;
- 
