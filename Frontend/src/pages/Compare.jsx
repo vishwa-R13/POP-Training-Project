@@ -112,7 +112,7 @@ const Compare = () => {
                     key={product._id}
                     className={product.features && product.features.includes(feature) ? 'feature-match' : 'feature-diff'}
                   >
-                    {product.features && product.features.includes(feature) ? '✓' : '✗'}
+                    {product.features.includes(feature) ? '✓' : '✗'}
                   </td>
                 ))}
               </tr>
@@ -129,7 +129,7 @@ const Compare = () => {
                 <td>{key.charAt(0).toUpperCase() + key.slice(1)}</td>
                 {compareList.map(product => (
                   <td key={product._id}>
-                    {product.specifications && product.specifications[key] ? product.specifications[key] : 'N/A'}
+                    {product.specifications[key] ? product.specifications[key] : 'N/A'}
                   </td>
                 ))}
               </tr>

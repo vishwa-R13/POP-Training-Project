@@ -3,50 +3,29 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  })
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  
-  const navigate = useNavigate()
-  
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError('')
-    setLoading(true)
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    var req = await axios.post("https://pop-training-hprf.onrender.com/login", {
+      email,
+      password,
+    });
     
-    try {
-      const response = await axios.post('/api/users/login', formData)
-      
-      // Save token and user info to localStorage
-      localStorage.setItem('token', response.data.token)
-      localStorage.setItem('user', JSON.stringify(response.data.user))
-      
-      // Redirect to products page
-      navigate('/products')
-    } catch (err) {
-      setError(err.response?.data?.message || 'Login failed. Please try again.')
-      console.error('Login error:', err)
-    } finally {
-      setLoading(false)
+    var isLoginSuccessful = req.data.isLoggedIn;
+    if (isLoginSuccessful) {
+      alert(req.data.message);
+      navigate("/");
+    } else {
+      alert(req.data.message);
     }
-  }
+  };
   
   return (
     <div className="container">
-      <form className="auth-form" onSubmit={handleSubmit}>
+      <form className="auth-form" onSubmit={handleLogin}>
         <h2>Login</h2>
-        
-        {error && <div className="error-message">{error}</div>}
         
         <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -55,8 +34,8 @@ const Login = () => {
             id="email"
             name="email"
             className="form-control"
-            value={formData.email}
-            onChange={handleChange}
+            value={email}
+          onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -68,8 +47,8 @@ const Login = () => {
             id="password"
             name="password"
             className="form-control"
-            value={formData.password}
-            onChange={handleChange}
+            value={password}
+          onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
@@ -78,13 +57,12 @@ const Login = () => {
           type="submit" 
           className="btn-primary" 
           style={{ width: '100%', marginTop: '10px' }}
-          disabled={loading}
         >
-          {loading ? 'Logging in...' : 'Login'}
+          Login
         </button>
         
         <p style={{ marginTop: '15px', textAlign: 'center' }}>
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/Signup">SignUp</Link>
         </p>
       </form>
     </div>

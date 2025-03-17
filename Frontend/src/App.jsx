@@ -9,7 +9,7 @@ import Products from './pages/Products'
 import ProductDetails from './pages/ProductDetails'
 import Compare from './pages/Compare'
 import Login from './pages/Login'
-import Register from './pages/Register'
+import Signup from './pages/Signup'
 import NotFound from './pages/NotFound'
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/compare" element={<Compare />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/Signup" element={<Signup />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
         <button 
           className="btn-primary"
           onClick={() => {
-            const compareList = JSON.parse(localStorage.getItem('compareList') || '[]')
+            const compareList = JSON.parse(localStorage.getItem('compareList'))
             if (!compareList.some(item => item._id === product._id)) {
               compareList.push(product)
               localStorage.setItem('compareList', JSON.stringify(compareList))
