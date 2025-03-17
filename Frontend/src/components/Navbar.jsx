@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -13,7 +13,6 @@ const Navbar = () => {
           <Link to="/" style={{ color: '#333', textDecoration: 'none' }}>Home</Link>
           <Link to="/products" style={{ color: '#333', textDecoration: 'none' }}>Products</Link>
           <Link to="/compare" style={{ color: '#333', textDecoration: 'none' }}>Compare</Link>
-  
               <Link to="/login" style={{ color: '#333', textDecoration: 'none' }}>Login</Link>
               <Link to="/Signup" style={{ color: '#333', textDecoration: 'none' }}>SignUp</Link>
         </div>
